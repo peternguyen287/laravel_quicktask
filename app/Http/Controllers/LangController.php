@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Session;
 
 class LangController extends Controller
 {
-    public function index($locale){
+    public function index($locale)
+    {
         Session::put('locale', $locale);
 
         return redirect()->back();

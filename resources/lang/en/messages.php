@@ -6,5 +6,8 @@ return [
     'add' => 'ADD',
     'current_tasks' => 'Current tasks',
     'name_error' => 'Name not null',
-    'quicktask' => 'Laravel Quicktask'
+    'quicktask' => 'Laravel Quicktask',
+    'english' => 'English',
+    'vietnam' => 'Vietnam',
+    'name_max' => 'Name limited!',
 ];

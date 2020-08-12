@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTask;
+use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +18,7 @@ class TaskController extends Controller
     {
         $tasks = Task::orderBy('created_at', 'asc')->get();
 
-        return view('tasks', ['tasks' => $tasks]);
+        return view('tasks', compact('tasks'));
     }
 
     /**
@@ -37,13 +37,9 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(StoreTask $request)
+    public function store(StoreTaskRequest $request)
     {
-        $validated = $request->validated();
-
-        $validated['name'] = $request->name;
-
-        Task::create($validated);
+        Task::create($request->all());
 
         return back()->withInput();
     }
