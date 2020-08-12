@@ -16,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['middleware' => 'localization'], function() {
+    Route::get('lang/{locale}', 'LangController@index')
+        ->name('lang');
+});
 Route::resource('tasks', 'TaskController');
+
