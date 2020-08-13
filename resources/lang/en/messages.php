@@ -10,4 +10,6 @@ return [
     'english' => 'English',
     'vietnam' => 'Vietnam',
     'name_max' => 'Name limited!',
+    'delete_task' => 'Delete Task',
+    'success_delete_message' => "Delete success",
 ];
