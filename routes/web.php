@@ -21,5 +21,6 @@ Route::group(['middleware' => 'localization'], function() {
 Route::resource('tasks', 'TaskController', [
     'names' => [
         'store' => 'task.store',
+        'destroy' => 'task.destroy',
     ]
 ]);

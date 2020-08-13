@@ -4,7 +4,12 @@
 
     <div class="panel-body">
         <!-- Display Validation Errors -->
-    @include('common.errors')
+        @include('common.errors')
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
 
     <!-- New Task Form -->
         <form action="{{ route('task.store') }}" method="POST" class="form-horizontal">
@@ -54,7 +59,12 @@
                                 </td>
 
                                 <td>
-                                    <!-- TODO: Delete Button -->
+                                    <form action="{{ route('task.destroy', $task->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button id="deleteTask" class="btn btn-danger">{{ trans('messages.delete_task') }}</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
